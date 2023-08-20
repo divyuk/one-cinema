@@ -39,7 +39,7 @@ interface CreditsData {
 
 function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetailData | null>(null);
-  const [credits, setCredits] = useState<CreditsData | null>(null);
+  const [credits, setCredits] = useState<CreditsData>();
   const [loading, setLoading] = useState<boolean>(false);
   const [readMore, setReadMore] = useState<boolean>(false);
 
@@ -101,12 +101,14 @@ function MovieDetail() {
               <img className="w-full h-full object-cover" alt="Movie Poster" />
             )}
             <div>
-              <h4 className="text-lg font-bold">
-                {movie?.title} ({Math.round(movie.vote_average)})
-              </h4>
+              {movie && (
+                <h4 className="text-lg font-bold">
+                  {movie?.title} ({Math.round(movie?.vote_average)})
+                </h4>
+              )}
               <p className="text-gray-600">
-                {movie?.release_date.split("-")[0]} |{" "}
-                {formatRuntime(movie?.runtime)}| Director:{" "}
+                ({movie?.release_date.split("-")[0]}) |{" "}
+                {movie && formatRuntime(movie?.runtime)}| Director:{" "}
                 {
                   credits?.crew.find((member) => member.job === "Director")
                     ?.name
@@ -114,7 +116,7 @@ function MovieDetail() {
               </p>
               <div className="my-2">
                 <span className="text-gray-700">Cast: {castToShow}</span>
-                {credits?.cast.length > 3 && (
+                {credits && credits?.cast.length > 3 && (
                   <button
                     onClick={toggleReadMore}
                     className="text-blue-500 hover:underline focus:outline-none ml-1"

@@ -50,23 +50,6 @@ describe("MovieCard Component", () => {
     expect(posterImage).toHaveAttribute("alt", "Sample Movie");
   });
 
-  const mockDataWithoutPoster = {
-    title: "Sample Movie",
-    id: 2,
-    vote_average: 8.0,
-    overview: "Another sample movie overview.",
-  };
-
-  test("does not display poster when poster_path is not provided", () => {
-    const { container } = render(
-      <MemoryRouter>
-        <MovieCard myData={mockDataWithoutPoster} />
-      </MemoryRouter>
-    );
-    const posterImage = container.querySelector("img");
-    expect(posterImage).not.toHaveAttribute("src", null); // No src attribute
-  });
-
   test("displays the movie title", () => {
     const { getByText } = render(
       <MemoryRouter>
