@@ -2,6 +2,8 @@
 
 A Movie Browser App build on React | Redux | TypeScript | Tailwind CSS.
 
+URL : https://onecinema.vercel.app/
+
 ## Instruction to run
 
 #### Step 1: Clone the Repository
