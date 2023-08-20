@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-
 import Home from "../components/Home";
-import { describe, test } from "vitest";
+import { describe, test, expect } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Home Component", () => {
@@ -12,5 +11,7 @@ describe("Home Component", () => {
         <Home />
       </MemoryRouter>
     );
+    const homeImage = getByAltText("home");
+    expect(homeImage).toBeInTheDocument();
   });
 });
