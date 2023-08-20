@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ListPage from "./pages/ListPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -7,9 +9,9 @@ function App() {
         <div>
           <Routes>
             {/* Route for the ListPage which is the Home page */}
-            <Route index element={} />
+            <Route index element={<ListPage />} />
             {/* Route for the DetailsPage */}
-            <Route path="/movie/:id" element={} />
+            <Route path="/movie/:id" element={<DetailPage />} />
           </Routes>
         </div>
       </BrowserRouter>
